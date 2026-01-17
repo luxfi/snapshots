@@ -1,0 +1,107 @@
+name: Daily Snapshot
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      network:
+        description: 'Network to snapshot (mainnet, testnet, or all)'
+        required: false
+        default: 'all'
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        network: [mainnet, testnet]
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zstd jq
+          
+      - name: Setup Lux CLI
+        run: |
+          curl -sSL https://raw.githubusercontent.com/luxfi/cli/main/scripts/install.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          
+      - name: Start network and sync
+        run: |
+          lux network start --${{ matrix.network }}
+          # Wait for health
+          sleep 30
+          lux network status
+          
+      - name: Create snapshot via RPC
+        run: |
+          # Get a random node (2-5, keep node1 for queries)
+          NODE=$((RANDOM % 4 + 2))
+          PORT=$((9630 + (NODE - 1) * 2))
+          
+          echo "Creating snapshot on node${NODE} via port ${PORT}"
+          
+          # Trigger DB flush via admin API
+          curl -s http://localhost:${PORT}/ext/admin \
+            -H 'Content-Type: application/json' \
+            -d '{"jsonrpc":"2.0","method":"admin.dbFlush","params":{},"id":1}'
+          
+          # Create snapshot using CLI
+          lux network snapshot save ${{ matrix.network }}-$(date +%Y%m%d) --network-type ${{ matrix.network }}
+          
+      - name: Convert to chunked format
+        run: |
+          SNAPSHOT_DIR=~/.lux/snapshots/${{ matrix.network }}-$(date +%Y%m%d)
+          OUT_DIR=${{ matrix.network }}
+          
+          # Clear old chunks
+          rm -f ${OUT_DIR}/*.part*
+          
+          # Convert to zstd chunks
+          gunzip -c ${SNAPSHOT_DIR}/archive.tar.gz | \
+            zstd -19 -T0 | \
+            split -b 99m -d -a 2 - ${OUT_DIR}/${{ matrix.network }}.tar.zst.part
+          
+          # Generate manifest
+          echo '{"network": "${{ matrix.network }}", "created": "'$(date -Iseconds)'", "chunks": [' > ${OUT_DIR}/manifest.json
+          first=true
+          for f in ${OUT_DIR}/*.part*; do
+            name=$(basename $f)
+            sha=$(sha256sum $f | awk '{print $1}')
+            size=$(stat --format=%s $f)
+            [ "$first" = true ] && first=false || echo "," >> ${OUT_DIR}/manifest.json
+            printf '{"file": "%s", "sha256": "%s", "size": %d}' "$name" "$sha" "$size" >> ${OUT_DIR}/manifest.json
+          done
+          echo ']}' >> ${OUT_DIR}/manifest.json
+          
+      - name: Stop network
+        run: lux network stop --${{ matrix.network }} --force || true
+          
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          git add ${{ matrix.network }}/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(${{ matrix.network }}): daily snapshot $(date +%Y-%m-%d)"
+            git push
+          fi
+          
+      - name: Create release
+        if: github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ matrix.network }}-$(date +%Y%m%d)
+          files: ${{ matrix.network }}/*
+          generate_release_notes: true
