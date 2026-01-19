@@ -1,20 +1,17 @@
 {
+  "name": "mainnet-2026-01-16",
+  "date": "2026-01-16",
   "network": "mainnet",
-  "network_id": 1,
-  "chain_id": 96369,
-  "created": "2026-01-16T09:42:00-08:00",
-  "format": "tar.zst",
-  "chunk_size": "99MB",
-  "contents": {
-    "c_chain_height": 1082780,
-    "zoo_chain_height": 799
-  },
-  "chunks": [
-    {"file": "mainnet.tar.zst.part00", "sha256": "4aa930d4fe23cc7ff1b49d3a03dd49a1232970683191b5dd1a062f9659147e39", "size": 103809024},
-    {"file": "mainnet.tar.zst.part01", "sha256": "b63325f947c479dd60163c1557efadd6cdf4cf06ca62990ae8773d38dc3fd771", "size": 103809024},
-    {"file": "mainnet.tar.zst.part02", "sha256": "b642c2a2c68ab3e5df9fb43ba7ac7ef63bb5faa6b365d1e3d69f1e507c1dee2f", "size": 103809024},
-    {"file": "mainnet.tar.zst.part03", "sha256": "bc0fe5def9d657e56a992bc7a8e0ce99280f871779fbf78f432a37f87f9f29cb", "size": 103809024},
-    {"file": "mainnet.tar.zst.part04", "sha256": "6f4da75208d2931df11153d35b9ae7aa5ff17e2d085d247c023598154b937d2f", "size": 103809024},
-    {"file": "mainnet.tar.zst.part05", "sha256": "5bbb52c80f25999db9aec29ca8d8a9c2594b7e7ad5c65480055f225a962926b6", "size": 40449447}
-  ]
+  "networkId": 96369,
+  "parts": [
+    "mainnet-2026-01-16.tar.zst.partaa",
+    "mainnet-2026-01-16.tar.zst.partab",
+    "mainnet-2026-01-16.tar.zst.partac",
+    "mainnet-2026-01-16.tar.zst.partad",
+    "mainnet-2026-01-16.tar.zst.partae",
+    "mainnet-2026-01-16.tar.zst.partaf",
+    "mainnet-2026-01-16.tar.zst.partag",
+    "mainnet-2026-01-16.tar.zst.partah"
+  ],
+  "restore": "cat mainnet-2026-01-16.tar.zst.part* | zstd -d | tar xf -"
 }

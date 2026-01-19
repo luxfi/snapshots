@@ -1,15 +1,11 @@
 {
+  "name": "testnet-2026-01-16",
+  "date": "2026-01-16",
   "network": "testnet",
-  "network_id": 2,
-  "chain_id": 96368,
-  "created": "2026-01-16T09:44:00-08:00",
-  "format": "tar.zst",
-  "chunk_size": "99MB",
-  "contents": {
-    "c_chain_height": 218,
-    "zoo_chain_height": 84
-  },
-  "chunks": [
-    {"file": "testnet.tar.zst.part00", "sha256": "8727eb4e01b36f36374d76c5c1c2c832db018456bcaddb97d8a12d57ac1b52d9", "size": 26367751}
-  ]
+  "networkId": 96368,
+  "parts": [
+    "testnet-2026-01-16.tar.zst.partaa",
+    "testnet-2026-01-16.tar.zst.partab"
+  ],
+  "restore": "cat testnet-2026-01-16.tar.zst.part* | zstd -d | tar xf -"
 }
