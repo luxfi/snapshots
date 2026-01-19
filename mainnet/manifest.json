@@ -1,17 +1,10 @@
 {
-  "name": "mainnet-2026-01-16",
-  "date": "2026-01-16",
+  "name": "mainnet-2026-01-19",
+  "date": "2026-01-19",
   "network": "mainnet",
   "networkId": 96369,
   "parts": [
-    "mainnet-2026-01-16.tar.zst.partaa",
-    "mainnet-2026-01-16.tar.zst.partab",
-    "mainnet-2026-01-16.tar.zst.partac",
-    "mainnet-2026-01-16.tar.zst.partad",
-    "mainnet-2026-01-16.tar.zst.partae",
-    "mainnet-2026-01-16.tar.zst.partaf",
-    "mainnet-2026-01-16.tar.zst.partag",
-    "mainnet-2026-01-16.tar.zst.partah"
+    "mainnet-2026-01-19.tar.zst.partaa"
   ],
-  "restore": "cat mainnet-2026-01-16.tar.zst.part* | zstd -d | tar xf -"
+  "restore": "cat mainnet-2026-01-19.tar.zst.part* | zstd -d | tar xf -"
 }

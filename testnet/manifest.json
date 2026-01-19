@@ -1,11 +1,10 @@
 {
-  "name": "testnet-2026-01-16",
-  "date": "2026-01-16",
+  "name": "testnet-2026-01-19",
+  "date": "2026-01-19",
   "network": "testnet",
   "networkId": 96368,
   "parts": [
-    "testnet-2026-01-16.tar.zst.partaa",
-    "testnet-2026-01-16.tar.zst.partab"
+    "testnet-2026-01-19.tar.zst.partaa"
   ],
-  "restore": "cat testnet-2026-01-16.tar.zst.part* | zstd -d | tar xf -"
+  "restore": "cat testnet-2026-01-19.tar.zst.part* | zstd -d | tar xf -"
 }
