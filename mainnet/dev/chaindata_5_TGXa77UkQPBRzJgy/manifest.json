@@ -1,0 +1,21 @@
+{
+  "network": "dev",
+  "chain_id": 0,
+  "node_id": 5,
+  "chain_data_id": "TGXa77UkQPBRzJgyxGpcfR2s3ER8ZR1A7YKLrdUV2hH9PeXCR",
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "chaindata_5.part00000.zst",
+        "bytes": 3287,
+        "sha256": "0e287a6f5d21f2d1dc45ea6d49f76a61075ebec3640c111cd8ba8e4b801e6ec4"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:18Z",
+  "last_version": 40
+}

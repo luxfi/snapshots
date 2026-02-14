@@ -1,0 +1,21 @@
+{
+  "network": "mainnet",
+  "chain_id": 0,
+  "node_id": 4,
+  "chain_data_id": "2Dtsufxg8Y6rdggbMANFn5gzE9cTNchkNhxjTPVPXZk5GK5R6z",
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "chaindata_4.part00000.zst",
+        "bytes": 1027,
+        "sha256": "99c5ee96ed33a5d001acfbbbcf63eaf8ee250e160380ff1fedfd3c2c6d81fbe0"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:19Z",
+  "last_version": 40
+}

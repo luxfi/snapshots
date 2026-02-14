@@ -1,0 +1,19 @@
+{
+  "network": "dev",
+  "chain_id": 1,
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "base_0.part00000.zst",
+        "bytes": 5032,
+        "sha256": "698384993b5f538fbb1168678d0b7b13e729f179753920961f7e7813c7b6f70b"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:18Z",
+  "last_version": 11
+}

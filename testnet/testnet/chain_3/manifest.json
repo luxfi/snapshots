@@ -1,0 +1,19 @@
+{
+  "network": "testnet",
+  "chain_id": 3,
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "base_0.part00000.zst",
+        "bytes": 6880,
+        "sha256": "ca00ae7cd6d9feb66c6afb9a7257c1400d81432c57f547c27b5b164de2234eb3"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:23Z",
+  "last_version": 25
+}

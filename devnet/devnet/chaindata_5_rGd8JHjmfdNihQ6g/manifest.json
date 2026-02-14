@@ -1,0 +1,21 @@
+{
+  "network": "devnet",
+  "chain_id": 0,
+  "node_id": 5,
+  "chain_data_id": "rGd8JHjmfdNihQ6gAGE3x7YCd8hKM3hELZyKsb7sWNxTWvPYg",
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "chaindata_5.part00000.zst",
+        "bytes": 1026,
+        "sha256": "fe7f43a5b043f28f547db47872ddfcd9eeb03eee5636c22053ccdf6500ed3688"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:26Z",
+  "last_version": 40
+}

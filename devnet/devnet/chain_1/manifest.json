@@ -1,0 +1,19 @@
+{
+  "network": "devnet",
+  "chain_id": 1,
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "base_0.part00000.zst",
+        "bytes": 7076,
+        "sha256": "20b1c7ddd1cdd0f248465e7e97f3d349fdc9d996bbc975f1aa12673a3ed94007"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:27Z",
+  "last_version": 25
+}

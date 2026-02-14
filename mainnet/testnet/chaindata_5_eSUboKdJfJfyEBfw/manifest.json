@@ -1,0 +1,21 @@
+{
+  "network": "testnet",
+  "chain_id": 0,
+  "node_id": 5,
+  "chain_data_id": "eSUboKdJfJfyEBfwKt5uxE7LHg2U3Ck3JSPg225zRorZDVoS9",
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "chaindata_5.part00000.zst",
+        "bytes": 1027,
+        "sha256": "946ed17ac815063fdc1fe29ce4cf50ccf98a0f8288bdb2b19c9953b61852466f"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:18Z",
+  "last_version": 40
+}

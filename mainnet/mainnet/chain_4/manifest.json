@@ -1,0 +1,19 @@
+{
+  "network": "mainnet",
+  "chain_id": 4,
+  "base": {
+    "height": 0,
+    "since": 0,
+    "parts": [
+      {
+        "name": "base_0.part00000.zst",
+        "bytes": 6965,
+        "sha256": "47c4e4840ef6adae4787e43b3fb07bfacdb196da34fcf567e54f5665d9a3cb52"
+      }
+    ]
+  },
+  "incrementals": [],
+  "state_root": "",
+  "created_at": "2026-01-23T09:15:18Z",
+  "last_version": 25
+}
