@@ -1,27 +1,7 @@
-# LLM.md - Hanzo Snapshots
+# snapshots — AI Assistant Context
 
-## Overview
+# Lux Network Snapshots
+
 Daily snapshots for Lux blockchain networks with all native chains.
 
-## Tech Stack
-- **Language**: Unknown
-
-## Build & Run
-```bash
-
-
-```
-
-## Structure
-```
-snapshots/
-  LICENSE
-  README.md
-  devnet/
-  mainnet/
-  pq-final/
-  testnet/
-```
-
-## Key Files
-- `README.md` -- Project documentation
+## Networks
