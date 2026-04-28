@@ -46,12 +46,13 @@ Deploy with: `lux subnet deploy <name> --mainnet`
 
 ## Snapshot Format
 
-Snapshots use zstd compression split into 99MB chunks (GitHub LFS):
+Snapshots use zstd compression. Binaries are published as **GitHub Release assets**
+(no Git LFS) and indexed by `manifest.json` at the repo root.
 
 ```
-<network>/
-├── manifest.json              # Checksums and metadata
-└── <name>.tar.zst.part*       # 99MB chunks
+manifest.json                   # asset URLs + sha256 + size, per network
+scripts/download-snapshot.sh    # fetch + verify a single network's asset
+Makefile                        # `make mainnet`, `make testnet`, `make pq-final`, `make verify`
 ```
 
 ## Usage
@@ -59,24 +60,27 @@ Snapshots use zstd compression split into 99MB chunks (GitHub LFS):
 ### Download and Restore
 
 ```bash
-# Clone with LFS
 git clone https://github.com/luxfi/snapshots.git
 cd snapshots
 
-# Restore mainnet snapshot
-cd mainnet
-cat mainnet-2026-01-16.tar.zst.part* | zstd -d | tar xf - -C ~/.lux/snapshots/
+# Fetch + verify (writes to ./<network>/<name>.tar.zst.part*)
+make mainnet
+# or: scripts/download-snapshot.sh mainnet
+
+# Restore
+cat mainnet/mainnet-*.tar.zst.part* | zstd -d | tar xf - -C ~/.lux/snapshots/
 
 # Start network from snapshot
-lux network start --mainnet --snapshot-name mainnet-full-2026-01-16
+lux network start --mainnet --snapshot-name mainnet-full-2026-01-19
 ```
 
 ### Verify Integrity
 
-Each `manifest.json` contains SHA256 checksums:
+`manifest.json` carries the canonical sha256 for each asset. The download script
+verifies automatically; to re-verify a local copy:
 
 ```bash
-sha256sum -c manifest.json
+jq -r '.snapshots[] | "\(.sha256)  \(.network)/\(.name)"' manifest.json | shasum -a 256 -c
 ```
 
 ## RPC Endpoints (Local)

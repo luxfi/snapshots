@@ -1,0 +1,27 @@
+{
+  "release": "snapshots-2026-04-28",
+  "base_url": "https://github.com/luxfi/snapshots/releases/download/snapshots-2026-04-28",
+  "snapshots": [
+    {
+      "name": "mainnet-2026-01-19.tar.zst.partaa",
+      "network": "mainnet",
+      "url": "https://github.com/luxfi/snapshots/releases/download/snapshots-2026-04-28/mainnet-2026-01-19.tar.zst.partaa",
+      "sha256": "99a98a9fc8bc37eecfe528d64763d817cb9c85312bac187f5da8101e90521bf5",
+      "size": 91009097
+    },
+    {
+      "name": "testnet-2026-01-19.tar.zst.partaa",
+      "network": "testnet",
+      "url": "https://github.com/luxfi/snapshots/releases/download/snapshots-2026-04-28/testnet-2026-01-19.tar.zst.partaa",
+      "sha256": "a85603033415c8f3add0e285ed455f27060991275e99d0869efa391a9f71a25b",
+      "size": 93961189
+    },
+    {
+      "name": "pq-final.tar.zst.partaa",
+      "network": "pq-final",
+      "url": "https://github.com/luxfi/snapshots/releases/download/snapshots-2026-04-28/pq-final.tar.zst.partaa",
+      "sha256": "6aa4385153e7282a5f2bf11ab1450c7e947071c9e33c4983ab264555169b56e3",
+      "size": 12541185
+    }
+  ]
+}
